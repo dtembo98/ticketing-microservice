@@ -7,11 +7,15 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: ticketing.dev
+    - host: ticketing.com
       http:
         paths: 
           - path: /api/users/?(.*)
             backend:
               serviceName: auth-srv
               servicePort: 3000
-               
+          - path: /?(.*)
+            backend:
+              serviceName: client-srv
+              servicePort: 3000
+                   
